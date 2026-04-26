@@ -1,0 +1,80 @@
+/* ===== PAGE CONTAINER ===== */
+
+.submissions-container{
+  max-width:1000px;
+  margin:60px auto;
+  padding:20px;
+}
+
+/* ===== PAGE TITLE ===== */
+
+.submissions-container h1{
+  font-size:36px;
+  font-weight:700;
+  margin-bottom:30px;
+}
+
+/* ===== TABLE ===== */
+
+.submissions-table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ===== TABLE HEADER ===== */
+
+.submissions-table thead{
+  background:#f3f4f6;
+}
+
+.submissions-table th{
+  text-align:left;
+  padding:14px;
+  font-size:15px;
+  font-weight:600;
+  color:#374151;
+  border-bottom:1px solid #e5e7eb;
+}
+
+/* ===== TABLE BODY ===== */
+
+.submissions-table td{
+  padding:14px;
+  font-size:14px;
+  border-bottom:1px solid #f1f5f9;
+}
+
+/* ===== ROW HOVER ===== */
+
+.submissions-table tbody tr:hover{
+  background:#f9fafb;
+}
+
+/* ===== VERDICT COLORS ===== */
+
+.verdict-accepted{
+  color:#16a34a;
+  font-weight:600;
+}
+
+.verdict-wrong{
+  color:#dc2626;
+  font-weight:600;
+}
+
+.verdict-runtime{
+  color:#ea580c;
+  font-weight:600;
+}
+
+/* ===== EMPTY MESSAGE ===== */
+
+.submissions-table td[colspan="4"]{
+  text-align:center;
+  padding:30px;
+  color:#6b7280;
+}

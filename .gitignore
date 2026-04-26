@@ -1,0 +1,14 @@
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+package-lock.json
+
+# Spring Boot
+target/
+*.class
+*.log
+
+# Environment
+.env

@@ -1,0 +1,387 @@
+/* .settings-container{
+  max-width:900px;
+  margin:60px auto;
+  padding:20px;
+}
+
+.settings-title{
+  font-size:22px;
+  margin-bottom:20px;
+}
+
+
+
+
+
+body[data-theme="light"] .settings-title{
+  color:#111827;
+}
+
+
+body[data-theme="dark"] .settings-title{
+  color:#e2e8f0;
+}
+
+
+
+
+
+
+.settings-card{
+  background:white;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  overflow:hidden;
+  margin-bottom:30px;
+}
+
+
+
+
+
+
+body[data-theme="light"] .settings-card{
+  background:white;
+  border:1px solid #e5e7eb;
+}
+
+
+body[data-theme="dark"] .settings-card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+}
+
+
+
+
+
+.settings-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+  border-bottom:1px solid #f1f5f9;
+}
+
+.settings-row:last-child{
+  border-bottom:none;
+}
+
+
+
+body[data-theme="dark"] .settings-row h4{
+  color:#e2e8f0;
+}
+
+body[data-theme="dark"] .settings-row p{
+  color:#94a3b8;
+}
+body[data-theme="light"] .settings-row h4{
+  color:#111827;
+}
+
+body[data-theme="light"] .settings-row p{
+  color:#6b7280;
+}
+
+
+
+.settings-row h4{
+  margin:0;
+}
+
+.settings-row p{
+  margin:4px 0 0 0;
+  color:#6b7280;
+}
+
+
+.settings-row button{
+  background:#3b82f6;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.settings-row button:hover{
+  background:#2563eb;
+}
+
+
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:2000;
+}
+
+
+.modal-box{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  width:320px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+
+
+
+body[data-theme="dark"] .modal-box{
+  background:#0f172a;
+  color:#e2e8f0;
+}
+body[data-theme="light"] .modal-box{
+  background:white;
+  color:#111827;
+}
+
+
+
+
+.modal-box input{
+  width:100%;
+  padding:10px;
+  margin-top:12px;
+
+  border:1px solid #d1d5db;
+  border-radius:6px;
+}
+
+
+
+.modal-buttons{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+}
+
+.modal-buttons button{
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.modal-buttons button:first-child{
+  background:#22c55e;
+  color:white;
+}
+
+.modal-buttons button:last-child{
+  background:#ef4444;
+  color:white;
+} */
+
+
+
+
+
+
+
+
+.settings-container{
+  max-width:900px;
+  margin:60px auto;
+  padding:20px;
+}
+
+/* ===== TITLES ===== */
+
+.settings-title{
+  font-size:22px;
+  margin-bottom:20px;
+  color:#111827;   /* default for light theme */
+}
+
+/* LIGHT */
+body[data-theme="light"] .settings-title{
+  color:#111827;
+}
+
+/* DARK */
+body[data-theme="dark"] .settings-title{
+  color:#e2e8f0;
+}
+
+
+
+/* ===== CARD ===== */
+
+.settings-card{
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:30px;
+}
+
+/* LIGHT CARD */
+body[data-theme="light"] .settings-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  color:#111827;
+}
+
+/* DARK CARD */
+body[data-theme="dark"] .settings-card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  color:#e2e8f0;
+}
+
+
+
+/* ===== ROW ===== */
+
+.settings-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+}
+
+/* LIGHT ROW BORDER */
+body[data-theme="light"] .settings-row{
+  border-bottom:1px solid #f1f5f9;
+}
+
+/* DARK ROW BORDER */
+body[data-theme="dark"] .settings-row{
+  border-bottom:1px solid #1e293b;
+}
+
+.settings-row:last-child{
+  border-bottom:none;
+}
+
+
+
+/* ===== TEXT ===== */
+
+.settings-row h4{
+  margin:0;
+  font-size:18px;
+}
+
+/* LIGHT TEXT */
+body[data-theme="light"] .settings-row h4{
+  color:#111827;
+}
+
+body[data-theme="light"] .settings-row p{
+  color:#4b5563;
+}
+
+/* DARK TEXT */
+body[data-theme="dark"] .settings-row h4{
+  color:#e2e8f0;
+}
+
+body[data-theme="dark"] .settings-row p{
+  color:#94a3b8;
+}
+
+
+
+/* ===== BUTTON ===== */
+
+.settings-row button{
+  background:#3b82f6;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.settings-row button:hover{
+  background:#2563eb;
+}
+
+
+
+/* ===== MODAL ===== */
+
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:2000;
+}
+
+/* LIGHT MODAL */
+body[data-theme="light"] .modal-box{
+  background:white;
+  color:#111827;
+}
+
+/* DARK MODAL */
+body[data-theme="dark"] .modal-box{
+  background:#0f172a;
+  color:#e2e8f0;
+}
+
+.modal-box{
+  padding:30px;
+  border-radius:12px;
+  width:320px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+
+
+/* ===== INPUT ===== */
+
+.modal-box input{
+  width:100%;
+  padding:10px;
+  margin-top:12px;
+
+  border:1px solid #d1d5db;
+  border-radius:6px;
+}
+
+
+
+/* ===== MODAL BUTTONS ===== */
+
+.modal-buttons{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+}
+
+.modal-buttons button{
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.modal-buttons button:first-child{
+  background:#22c55e;
+  color:white;
+}
+
+.modal-buttons button:last-child{
+  background:#ef4444;
+  color:white;
+}

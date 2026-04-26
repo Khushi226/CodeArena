@@ -1,0 +1,109 @@
+.featured-section{
+  margin-top:80px;
+}
+
+.featured-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.featured-header h2{
+  font-size:32px;
+  font-weight:700;
+}
+
+.featured-header p{
+  color:#94a3b8;
+}
+
+.view-problems-btn{
+  background:transparent;
+  border:1px solid #334155;
+  color:white;
+  padding:10px 18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.view-problems-btn:hover{
+  background:#111827;
+}
+
+
+.featured-list{
+  background:#020617;
+  border:1px solid #1e293b;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.problem-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:18px 22px;
+
+  border-bottom:1px solid #1e293b;
+
+  cursor:pointer;
+
+  transition:0.2s;
+}
+
+.problem-row:hover{
+  background:#0f172a;
+}
+
+.problem-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.problem-number{
+  color:#64748b;
+}
+
+.problem-left h4{
+  margin:0;
+  font-size:16px;
+}
+
+.problem-topic{
+  font-size:13px;
+  color:#64748b;
+}
+
+.problem-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.acceptance{
+  color:#64748b;
+}
+
+.difficulty{
+  padding:4px 12px;
+  border-radius:14px;
+  font-size:13px;
+}
+
+.easy{
+  background:#064e3b;
+  color:#34d399;
+}
+
+.medium{
+  background:#78350f;
+  color:#fbbf24;
+}
+
+.hard{
+  background:#7f1d1d;
+  color:#f87171;
+}

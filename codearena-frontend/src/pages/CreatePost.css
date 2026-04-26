@@ -1,0 +1,35 @@
+.create-post-container{
+  max-width:700px;
+  margin:60px auto;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.create-post-container input{
+  padding:12px;
+  font-size:16px;
+  border:1px solid #d1d5db;
+  border-radius:6px;
+}
+
+.create-post-container textarea{
+  padding:12px;
+  height:150px;
+  font-size:16px;
+  border:1px solid #d1d5db;
+  border-radius:6px;
+}
+
+.create-post-container button{
+  padding:12px;
+  background:#22c55e;
+  border:none;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.create-post-container button:hover{
+  background:#16a34a;
+}

@@ -1,0 +1,57 @@
+.learn-article-container {
+  background: #0f172a;
+  min-height: 100vh;
+  padding: 40px 10%;
+  color: #e5e7eb;
+}
+
+/* Article card */
+.learn-article {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 32px;
+  line-height: 1.7;
+  font-size: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Markdown headings */
+.learn-article h1,
+.learn-article h2,
+.learn-article h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #22c55e;
+}
+
+/* Code blocks */
+.learn-article pre {
+  background: #020617;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid #1e293b;
+  margin-top: 12px;
+}
+
+/* Lists */
+.learn-article ul {
+  padding-left: 20px;
+}
+
+.learn-article li {
+  margin-bottom: 6px;
+}
+
+/* Divider */
+.learn-article hr {
+  border: none;
+  border-top: 1px solid #1e293b;
+  margin: 20px 0;
+}
+
+/* Bold text */
+.learn-article strong {
+  color: #38bdf8;
+}

@@ -1,0 +1,19 @@
+.otp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.otp-input {
+  width: 250px;
+  margin-top: 15px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.otp-button {
+  margin-top: 20px;
+  border-radius: 20px;
+}

@@ -1,0 +1,230 @@
+/* .problem-page {
+  display: flex;
+  height: calc(100vh - 64px); 
+  background: #0f172a;
+  color: #e5e7eb;
+  overflow: hidden;
+}
+
+
+.problem-left {
+  width: 50%;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.problem-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.problem-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e5e7eb;
+}
+.difficulty-badge {
+  margin-left: auto;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+} 
+
+.difficulty-badge.easy {
+  color: #22c55e;
+  font-size: 17px;
+
+}
+.difficulty-badge.medium {
+  color: #facc15;
+  font-size: 17px;
+}
+.difficulty-badge.hard {
+  color: #ef4444;
+  font-size: 17px;
+}
+
+.problem-description {
+  margin: 16px 0;
+  line-height: 1.6;
+}
+
+.example-box {
+  background: #020617;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.constraints {
+  background: #020617;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+
+.problem-right {
+  width: 50%;
+  border-left: 1px solid #1e293b;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+.problem-page {
+display: flex;
+height: calc(100vh - 64px);
+background: #0f172a;
+color: #e5e7eb;
+overflow: hidden;
+}
+
+/* LEFT PANEL */
+.problem-left {
+flex: 1;
+padding: 24px;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+gap: 24px;
+}
+
+/* HEADER */
+.problem-header {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.problem-title {
+font-size: 2rem;
+font-weight: 700;
+}
+
+/* DIFFICULTY BADGE */
+.difficulty-badge {
+padding: 4px 12px;
+border-radius: 999px;
+font-size: 14px;
+font-weight: 600;
+}
+
+.difficulty-badge.easy {
+background: rgba(34,197,94,0.15);
+color: #22c55e;
+}
+
+.difficulty-badge.medium {
+background: rgba(250,204,21,0.15);
+color: #facc15;
+}
+
+.difficulty-badge.hard {
+background: rgba(239,68,68,0.15);
+color: #ef4444;
+}
+
+/* DESCRIPTION */
+.problem-description {
+line-height: 1.7;
+font-size: 15px;
+}
+
+/* SECTION TITLES */
+.section-title {
+font-size: 20px;
+font-weight: 600;
+margin-bottom: 10px;
+}
+
+/* EXAMPLES CONTAINER */
+.examples-container {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+/* EXAMPLE BOX */
+.example-box {
+background: #020617;
+border: 1px solid #1e293b;
+padding: 16px;
+border-radius: 10px;
+width: 100%;
+}
+
+/* CODE STYLE INSIDE EXAMPLES */
+.example-box pre {
+background: #0f172a;
+padding: 10px;
+border-radius: 6px;
+overflow-x: auto;
+margin-top: 8px;
+}
+
+/* CONSTRAINTS */
+.constraints {
+background: #020617;
+  border: 1px solid #1e293b;
+  padding: 16px;
+  border-radius: 10px;
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* RIGHT PANEL (EDITOR) */
+.problem-right {
+flex: 1;
+border-left: 1px solid #1e293b;
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+/* EDITOR HEADER */
+.editor-header {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 16px;
+border-bottom: 1px solid #1e293b;
+}
+
+/* BUTTONS */
+.run-btn {
+background: #2563eb;
+color: white;
+border: none;
+padding: 6px 14px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+.submit-btn {
+background: #22c55e;
+color: white;
+border: none;
+padding: 6px 14px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+/* SUBMISSION HISTORY */
+.submission-history {
+padding: 16px;
+border-top: 1px solid #1e293b;
+}
+

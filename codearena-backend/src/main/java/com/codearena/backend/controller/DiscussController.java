@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/discuss")
-@CrossOrigin(origins = "http://localhost:5173")
 public class DiscussController {
 
     private final DiscussService discussService;

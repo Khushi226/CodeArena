@@ -12,6 +12,8 @@ public interface TestcaseRepository extends JpaRepository<Testcase, Long> {
         Long problemId,
         Testcase.Visibility visibility
     );
+
+    boolean deleteByProblemId(Long problemId);
 }
 
 

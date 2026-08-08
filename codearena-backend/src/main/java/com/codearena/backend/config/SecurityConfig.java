@@ -1,3 +1,6 @@
+
+
+
 package com.codearena.backend.config;
 
 import com.codearena.backend.security.JwtAuthFilter;
@@ -11,8 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Configuration
 @EnableWebSecurity // Ensure this is present
@@ -43,12 +45,22 @@ public class SecurityConfig {
                         .requestMatchers("/run/**").permitAll()
                         .requestMatchers("/api/problem/**").permitAll()
                         .requestMatchers("/api/learn/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/problems/admin/hidden").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/problems/admin/all").hasRole("ADMIN")
                         .requestMatchers("/problems/**").permitAll()
                         .requestMatchers("/import/**").permitAll()
                         .requestMatchers("/debug/**").permitAll()
                         .requestMatchers("/submissions/**").permitAll()
                         .requestMatchers("/api/learn/problems/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/discuss/**").permitAll()
+
+                        // contests — most specific rules first, Spring uses the first match:
+                        .requestMatchers(HttpMethod.POST, "/contests").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/contests/*/problems/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/contests/*/register").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/contests/*/submit").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/contests/**").permitAll()
+                        .requestMatchers("/contests/**").authenticated()
 
                         // everything else protected
                         .requestMatchers("/submit/**").authenticated()
@@ -61,8 +73,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // @Bean
-    // public PasswordEncoder passwordEncoder(){
-    //     return new BCryptPasswordEncoder();
-    // }
 }

@@ -1,42 +1,3 @@
-// package com.codearena.backend.entity;
-
-// import jakarta.persistence.*;
-// import lombok.*;
-
-// @Entity
-// @Table(name = "problems")
-// @Getter
-// @Setter
-// @NoArgsConstructor
-// @AllArgsConstructor
-// public class Problem {
-
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
-
-//     private String title;
-//     private String problemSlug;
-//     private String difficulty;
-
-//     @Column(columnDefinition = "TEXT")
-//     private String description;
-
-//     @Column(columnDefinition = "TEXT")
-//     private String topics;
-
-//     @Column(columnDefinition = "TEXT")
-//     private String constraints;
-
-//     @Column(columnDefinition = "TEXT")
-//     private String examples;
-// }
-
-
-
-
-
-
 
 
 package com.codearena.backend.entity;
@@ -82,6 +43,9 @@ public class Problem {
 
     @Column(columnDefinition = "TEXT")
     private String constraints;
+
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean visible = true;
 
     @Column(columnDefinition = "TEXT")
     private String examples;

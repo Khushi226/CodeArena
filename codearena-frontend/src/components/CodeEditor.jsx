@@ -1,141 +1,28 @@
-// // import Editor from "@monaco-editor/react";
-// // import { useEffect, useState } from "react";
-// // import "./CodeEditor.css";
-// // import { runCode, submitCode, getSubmissions } from "../services/judgeService";
-
-
-// // // console.log("StarterCode inside CodeEditor:", starterCode);
-
-// // const CodeEditor = ({ problemId, starterCode }) => {
-// //   const [language, setLanguage] = useState("java");
-// //   const [code, setCode] = useState("");
-
-// //   const [result, setResult] = useState(null);
-// //   const [submissions, setSubmissions] = useState([]);
-// //   const [loading, setLoading] = useState(false);
-
-// //   useEffect(() => {
-// //     if (starterCode && language === "java") {
-// //       setCode(starterCode);
-// //     }
-// //   }, [starterCode, language]);
-
-// //   async function loadSubmissionHistory() {
-// //     if (!problemId) return;
-// //     const list = await getSubmissions(problemId);
-// //     setSubmissions(list);
-// //   }
-
-// //   useEffect(() => {
-// //     loadSubmissionHistory();
-// //   }, [problemId]);
-
-// //   async function handleRun() {
-// //     setLoading(true);
-// //     setResult(null);
-
-// //     try {
-// //       const data = await runCode(problemId, language, code);
-// //       setResult(data);
-// //     } catch (err) {
-// //       setResult({ result: "SERVER_ERROR", message: err.message });
-// //     }
-
-// //     setLoading(false);
-// //   }
-
-// //   async function handleSubmit() {
-// //     setLoading(true);
-// //     setResult(null);
-
-// //     try {
-// //       const data = await submitCode(problemId, language, code);
-// //       setResult(data);
-// //       await loadSubmissionHistory();
-// //     } catch (err) {
-// //       setResult({ result: "SERVER_ERROR", message: err.message });
-// //     }
-
-// //     setLoading(false);
-// //   }
-
-// //   return (
-// //     <div className="editor-container">
-// //       <div className="editor-header">
-// //         <select
-// //           value={language}
-// //           onChange={(e) => {
-// //             const newLang = e.target.value;
-// //             setLanguage(newLang);
-
-// //             if (newLang === "java" && starterCode) {
-// //               setCode(starterCode);
-// //             } else {
-// //               setCode("");
-// //             }
-// //           }}
-// //         >
-// //           <option value="java">Java</option>
-// //           <option value="javascript">JavaScript</option>
-// //         </select>
-
-// //         <div className="editor-actions">
-// //           <button onClick={handleRun} disabled={loading}>
-// //             {loading ? "Running..." : "Run"}
-// //           </button>
-// //           <button onClick={handleSubmit} disabled={loading}>
-// //             {loading ? "Submitting..." : "Submit"}
-// //           </button>
-// //         </div>
-// //       </div>
-
-// //       <Editor
-// //         key={problemId}
-// //         height="55vh"
-// //         language={language}
-// //         defaultValue={starterCode}
-// //         theme="vs-dark"
-// //         onChange={(v) => setCode(v)}
-// //         options={{
-// //           fontSize: 14,
-// //           minimap: { enabled: false },
-// //           automaticLayout: true,
-// //         }}
-// //       />
-
-
-// //       {/* RESULT UI stays same */}
-// //     </div>
-// //   );
-// // };
-
-// // export default CodeEditor;
-
-
-
 
 
 // import Editor from "@monaco-editor/react";
 // import { useEffect, useState } from "react";
+// import {useNavigate} from "react-router-dom";
 // import "./CodeEditor.css";
 // import { runCode, submitCode, getSubmissions } from "../services/judgeService";
 
 // const CodeEditor = ({ problemId, starterCode }) => {
-
 //   const [language, setLanguage] = useState("java");
 //   const [code, setCode] = useState("");
 //   const [result, setResult] = useState(null);
 //   const [submissions, setSubmissions] = useState([]);
 //   const [loading, setLoading] = useState(false);
 
-//   // ✅ Load starter code when problem changes
+//   const navigate =useNavigate();
+
+//   // ✅ Load starter code
 //   useEffect(() => {
 //     if (starterCode) {
 //       setCode(starterCode);
 //     }
 //   }, [starterCode]);
 
-//   // ✅ Load submission history
+//   // ✅ Load submissions
 //   useEffect(() => {
 //     if (problemId) {
 //       loadSubmissionHistory();
@@ -146,7 +33,8 @@
 //     try {
 //       const list = await getSubmissions(problemId);
 //       setSubmissions(list);
-//     } catch (err) {
+//     } 
+//     catch (err) {
 //       console.error("Failed to load submissions:", err);
 //     }
 //   }
@@ -159,8 +47,17 @@
 //     try {
 //       const data = await runCode(problemId, language, code);
 //       setResult(data);
-//     } catch (err) {
-//       setResult({ result: "SERVER_ERROR", message: err.message });
+//     } 
+//     // catch (err) {
+//     //   setResult({ result: "SERVER_ERROR", message: err.message });
+//     // }
+//     catch (err) {
+//       if (err.message.includes("Session expired")) {
+//         alert("Your session expired. Please log in again.");
+//         navigate("/login");
+//       } else {
+//         setResult({ result: "SERVER_ERROR", message: err.message });
+//       }
 //     }
 
 //     setLoading(false);
@@ -175,8 +72,17 @@
 //       const data = await submitCode(problemId, language, code);
 //       setResult(data);
 //       await loadSubmissionHistory();
-//     } catch (err) {
-//       setResult({ result: "SERVER_ERROR", message: err.message });
+//     } 
+//     // catch (err) {
+//     //   setResult({ result: "SERVER_ERROR", message: err.message });
+//     // }
+//     catch (err) {
+//       if (err.message.includes("Session expired")) {
+//         alert("Your session expired. Please log in again.");
+//         navigate("/login");
+//       } else {
+//         setResult({ result: "SERVER_ERROR", message: err.message });
+//       }
 //     }
 
 //     setLoading(false);
@@ -184,7 +90,7 @@
 
 //   return (
 //     <div className="editor-container">
-      
+
 //       {/* HEADER */}
 //       <div className="editor-header">
 //         <select
@@ -220,25 +126,15 @@
 //         }}
 //       />
 
-//       {/* RESULT PANEL */}
+//       {/* RESULT PANEL 🔥 FIXED */}
 //       {result && (
-//         <div style={{
-//           marginTop: "12px",
-//           background: "#111",
-//           padding: "12px",
-//           borderRadius: "8px",
+//         <div className="result-box">
+//           <h3>Result: {result.result}</h3>
 
-//           // maxHeight: "300px",  /* 🔥 controls height */
-//           // overflowY: auto  /* 🔥 enables vertical scroll */
-
-//         }}>
-//           <h3 style={{ margin: 0 }}>
-//             Result: {result.result}
-//           </h3>
-
-//           {result.failedTestcaseIndex !== null && result.failedTestcaseIndex !== undefined && (
-//             <p>Failed testcase: {result.failedTestcaseIndex}</p>
-//           )}
+//           {result.failedTestcaseIndex !== null &&
+//             result.failedTestcaseIndex !== undefined && (
+//               <p>Failed testcase: {result.failedTestcaseIndex}</p>
+//             )}
 
 //           {result.input && (
 //             <>
@@ -271,19 +167,19 @@
 //       )}
 
 //       {/* SUBMISSION HISTORY */}
-//       <div style={{ marginTop: "15px" }}>
+//       <div className="submission-box">
 //         <h3>Submission History</h3>
 
 //         {submissions.length === 0 ? (
 //           <p>No submissions yet.</p>
 //         ) : (
-//           <table style={{ width: "100%", borderCollapse: "collapse" }}>
+//           <table className="submission-table">
 //             <thead>
 //               <tr>
-//                 <th style={{ textAlign: "left" }}>ID</th>
-//                 <th style={{ textAlign: "left" }}>Verdict</th>
-//                 <th style={{ textAlign: "left" }}>Language</th>
-//                 <th style={{ textAlign: "left" }}>Time</th>
+//                 <th>ID</th>
+//                 <th>Verdict</th>
+//                 <th>Language</th>
+//                 <th>Time</th>
 //               </tr>
 //             </thead>
 //             <tbody>
@@ -324,42 +220,32 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Editor from "@monaco-editor/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./CodeEditor.css";
 import { runCode, submitCode, getSubmissions } from "../services/judgeService";
 
-const CodeEditor = ({ problemId, starterCode }) => {
+const CodeEditor = ({ problemId, starterCode, submitFn, loadSubmissionsFn, storageKey }) => {
   const [language, setLanguage] = useState("java");
   const [code, setCode] = useState("");
   const [result, setResult] = useState(null);
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const draftTimeoutRef = useRef(null);
+
+  
   // ✅ Load starter code
   useEffect(() => {
-    if (starterCode) {
+    const key = `codearena_draft_${storageKey ?? problemId}`;
+    const savedDraft = problemId ? localStorage.getItem(key) : null;
+
+    if (savedDraft !== null) {
+      setCode(savedDraft);
+    } else if (starterCode) {
       setCode(starterCode);
     }
-  }, [starterCode]);
+  }, [starterCode, problemId, storageKey]);
 
   // ✅ Load submissions
   useEffect(() => {
@@ -368,10 +254,23 @@ const CodeEditor = ({ problemId, starterCode }) => {
     }
   }, [problemId]);
 
+  useEffect(() => {
+    return () => {
+      if (draftTimeoutRef.current) clearTimeout(draftTimeoutRef.current);
+    };
+  }, []);
+
   async function loadSubmissionHistory() {
     try {
-      const list = await getSubmissions(problemId);
+      const list = loadSubmissionsFn ? await loadSubmissionsFn(problemId) : await getSubmissions(problemId);
       setSubmissions(list);
+
+      const key = `codearena_draft_${storageKey ?? problemId}`;
+      const hasDraft = localStorage.getItem(key) !== null;
+
+      if (!hasDraft && list && list.length > 0 && list[0].code) {
+        setCode(list[0].code);
+      }
     } catch (err) {
       console.error("Failed to load submissions:", err);
     }
@@ -398,7 +297,7 @@ const CodeEditor = ({ problemId, starterCode }) => {
     setResult(null);
 
     try {
-      const data = await submitCode(problemId, language, code);
+      const data = submitFn ? await submitFn(problemId, language, code) : await submitCode(problemId, language, code);
       setResult(data);
       await loadSubmissionHistory();
     } catch (err) {
@@ -406,6 +305,17 @@ const CodeEditor = ({ problemId, starterCode }) => {
     }
 
     setLoading(false);
+  }
+
+  function handleCodeChange(value) {
+    const newCode = value || "";
+    setCode(newCode);
+
+    const key = `codearena_draft_${storageKey ?? problemId}`;
+    if (draftTimeoutRef.current) clearTimeout(draftTimeoutRef.current);
+    draftTimeoutRef.current = setTimeout(() => {
+      localStorage.setItem(key, newCode);
+    }, 500);
   }
 
   return (
@@ -437,7 +347,7 @@ const CodeEditor = ({ problemId, starterCode }) => {
         language="java"
         value={code}
         theme="vs-dark"
-        onChange={(v) => setCode(v || "")}
+        onChange={handleCodeChange}
         options={{
           fontSize: 14,
           minimap: { enabled: false },

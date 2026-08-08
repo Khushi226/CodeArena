@@ -1,3 +1,5 @@
+
+
 package com.codearena.backend.entity;
 
 import jakarta.persistence.*;
@@ -18,6 +20,19 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    // Everyone defaults to USER. Promote to ADMIN manually in the DB for now —
+    // no admin-promotion UI exists yet, and this is the only role that matters today.
+    @Column(nullable = false)
+    private String role = "USER";
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public long getId(){
         return id;

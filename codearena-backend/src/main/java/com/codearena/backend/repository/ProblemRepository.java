@@ -1,21 +1,3 @@
-// package com.codearena.backend.repository;
-
-// import java.util.Optional;
-
-// import org.springframework.data.jpa.repository.JpaRepository;
-// import com.codearena.backend.entity.Problem;
-
-// public interface ProblemRepository extends JpaRepository<Problem, Long> {
-
-//     Optional<Problem> findByProblemSlug(String problemSlug);
-// }
-
-
-
-
-
-
-
 package com.codearena.backend.repository;
 
 import java.util.List;
@@ -31,7 +13,19 @@ public interface ProblemRepository extends JpaRepository<Problem, Long> {
 
     Optional<Problem> findByProblemSlug(String problemSlug);
 
+    // Public catalog — only ever returns visible problems.
+    List<Problem> findByVisibleTrue();
+
+    // The contest builder needs the opposite: only problems staged as
+    // contest-exclusive, never already-public ones.
+    List<Problem> findByVisibleFalse();
+
+    Optional<Problem> findByProblemSlugAndVisibleTrue(String problemSlug);
+
     // 🔥 ADD THIS METHOD
-    @Query("SELECT p FROM Problem p WHERE LOWER(p.topics) LIKE LOWER(CONCAT('%', :topic, '%'))")
+    @Query("SELECT p FROM Problem p WHERE LOWER(p.topics) LIKE LOWER(CONCAT('%', :topic, '%')) AND p.visible = true")
     List<Problem> findByTopic(@Param("topic") String topic);
+
+    // Every problem regardless of visibility, for the admin contest-builder.
+    List<Problem> findAllByOrderByIdAsc();
 }

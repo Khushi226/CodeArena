@@ -3,17 +3,36 @@
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
+  padding: 0 20px;
 }
 
 .otp-input {
-  width: 250px;
-  margin-top: 15px;
+  width: 260px;
+  margin-top: 16px;
   text-align: center;
-  background-color: white;
-  border-radius: 10px;
+  letter-spacing: .3em;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--r-sm) !important;
+  padding: 12px !important;
+}
+
+.otp-input:focus {
+  border-color: var(--brand) !important;
+  box-shadow: 0 0 0 3px var(--brand-soft) !important;
 }
 
 .otp-button {
-  margin-top: 20px;
-  border-radius: 20px;
+  margin-top: 22px;
+  border-radius: var(--r-full) !important;
+  padding: 10px 28px !important;
+  background: var(--brand) !important;
+  border-color: var(--brand) !important;
+  color: #06210f !important;
+  font-weight: 700;
 }
+
+.otp-button:hover { background: var(--brand-strong) !important; }

@@ -1,60 +1,52 @@
-.discuss-container{
-  max-width:900px;
-  margin:60px auto;
-  padding:20px;
+.discuss-container {
+  max-width: 880px;
+  margin: 56px auto;
+  padding: 0 20px 60px;
 }
 
-.discuss-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
+.discuss-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
 }
 
-.create-post-btn{
-  padding:10px 16px;
-  background:#22c55e;
-  color:white;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
+.discuss-header h1 { font-size: 26px; font-weight: 700; }
+
+.create-post-btn {
+  padding: 10px 18px;
+  background: var(--brand);
+  color: #06210f;
+  border: none;
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
 }
 
-.create-post-btn:hover{
-  background:#16a34a;
+.create-post-btn:hover { background: var(--brand-strong); transform: translateY(-1px); }
+
+.post-list { display: flex; flex-direction: column; gap: 16px; }
+
+.post-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 20px 22px;
+  cursor: pointer;
+  transition: all .2s ease;
+  background: var(--surface);
 }
 
-.post-list{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
+.post-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
-.post-card{
-  border:1px solid #e5e7eb;
-  border-radius:8px;
-  padding:16px;
-  cursor:pointer;
-  transition:all 0.2s ease;
-  background:white;
-}
+.post-card h3 { margin-bottom: 10px; font-size: 17px; color: var(--text); }
 
-.post-card:hover{
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
+.post-preview { color: var(--text-dim); margin-bottom: 14px; font-size: 14px; line-height: 1.6; }
 
-.post-card h3{
-  margin-bottom:10px;
-}
-
-.post-preview{
-  color:#6b7280;
-  margin-bottom:12px;
-}
-
-.post-meta{
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  color:#9ca3af;
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
 }

@@ -1,80 +1,48 @@
-/* ===== PAGE CONTAINER ===== */
+.submissions-container { max-width: 1000px; margin: 56px auto; padding: 0 20px 60px; }
 
-.submissions-container{
-  max-width:1000px;
-  margin:60px auto;
-  padding:20px;
+.submissions-container h1 { font-size: 30px; font-weight: 700; margin-bottom: 26px; color: var(--text); }
+
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-/* ===== PAGE TITLE ===== */
+.submissions-table thead { background: var(--bg-soft); }
 
-.submissions-container h1{
-  font-size:36px;
-  font-weight:700;
-  margin-bottom:30px;
+.submissions-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--border);
 }
 
-/* ===== TABLE ===== */
-
-.submissions-table{
-  width:100%;
-  border-collapse:collapse;
-  background:white;
-  border-radius:8px;
-  overflow:hidden;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+.submissions-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
 }
 
-/* ===== TABLE HEADER ===== */
+.submissions-table tbody tr:hover { background: var(--surface-2); }
+.submissions-table tbody tr:last-child td { border-bottom: none; }
 
-.submissions-table thead{
-  background:#f3f4f6;
-}
+.verdict-accepted { color: var(--brand); font-weight: 700; }
+.verdict-wrong { color: var(--red-strong); font-weight: 700; }
+.verdict-runtime { color: #fb923c; font-weight: 700; }
 
-.submissions-table th{
-  text-align:left;
-  padding:14px;
-  font-size:15px;
-  font-weight:600;
-  color:#374151;
-  border-bottom:1px solid #e5e7eb;
-}
-
-/* ===== TABLE BODY ===== */
-
-.submissions-table td{
-  padding:14px;
-  font-size:14px;
-  border-bottom:1px solid #f1f5f9;
-}
-
-/* ===== ROW HOVER ===== */
-
-.submissions-table tbody tr:hover{
-  background:#f9fafb;
-}
-
-/* ===== VERDICT COLORS ===== */
-
-.verdict-accepted{
-  color:#16a34a;
-  font-weight:600;
-}
-
-.verdict-wrong{
-  color:#dc2626;
-  font-weight:600;
-}
-
-.verdict-runtime{
-  color:#ea580c;
-  font-weight:600;
-}
-
-/* ===== EMPTY MESSAGE ===== */
-
-.submissions-table td[colspan="4"]{
-  text-align:center;
-  padding:30px;
-  color:#6b7280;
+.submissions-table td[colspan="4"] {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-faint);
+  font-family: var(--font-body);
 }

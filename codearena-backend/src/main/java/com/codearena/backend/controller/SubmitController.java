@@ -1,49 +1,3 @@
-// package com.codearena.backend.controller;
-
-// import com.codearena.backend.dto.JudgeResponse;
-// import com.codearena.backend.dto.SubmissionRequest;
-// import com.codearena.backend.entity.Submission;
-// import com.codearena.backend.judge.CodeJudgeService;
-// import com.codearena.backend.service.SubmissionService;
-// import org.springframework.web.bind.annotation.*;
-
-// @RestController
-// @RequestMapping("/submit")
-// public class SubmitController {
-
-//     private final SubmissionService submissionService;
-//     private final CodeJudgeService codeJudgeService;
-
-//     public SubmitController(SubmissionService submissionService,
-//                             CodeJudgeService codeJudgeService) {
-//         this.submissionService = submissionService;
-//         this.codeJudgeService = codeJudgeService;
-//     }
-
-//     @PostMapping
-//     public JudgeResponse submitCode(@RequestBody SubmissionRequest request) {
-
-//         // SUBMIT → ALL testcases
-//         JudgeResponse response = codeJudgeService.judgeJava(
-//                 request.getProblemId(),
-//                 request.getCode(),
-//                 false
-//         );
-
-//         // Save submission
-//         Submission submission = new Submission();
-//         submission.setUserId(1L); // hardcoded for now
-//         submission.setProblemId(request.getProblemId());
-//         submission.setLanguage(request.getLanguage());
-//         submission.setCode(request.getCode());
-//         submission.setVerdict(response.getResult().name());
-
-//         submissionService.saveSubmission(submission);
-
-//         return response;
-//     }
-// }
-
 
 
 package com.codearena.backend.controller;
@@ -59,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/submit")
-@CrossOrigin(origins = "http://localhost:5173")
 public class SubmitController {
 
     private final CodeJudgeService codeJudgeService;

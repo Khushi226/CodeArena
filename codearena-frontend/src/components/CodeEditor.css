@@ -3,38 +3,123 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: #020617;
+  background: var(--bg-soft);
 }
 
 .editor-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  background: #020617;
-  border-bottom: 1px solid #1e293b;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
 }
 
 .editor-header select {
-  background: #020617;
-  color: white;
-  border: 1px solid #1e293b;
-  padding: 6px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
 }
+
+.editor-actions { display: flex; }
 
 .editor-actions button {
   margin-left: 8px;
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 7px 16px;
+  border-radius: var(--r-sm);
   border: none;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 13.5px;
+  transition: all .18s ease;
 }
 
-.run-btn {
-  background: #1e40af;
-  color: white;
+.run-btn { background: var(--surface-3); color: var(--text); border: 1px solid var(--border-strong) !important; }
+.run-btn:hover:not(:disabled) { border-color: var(--blue) !important; color: var(--blue); }
+
+.submit-btn { background: var(--brand); color: #06210f; }
+.submit-btn:hover:not(:disabled) { background: var(--brand-strong); }
+
+.editor-actions button:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ---- Result panel ---- */
+.result-box {
+  margin: 16px;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--r-md);
 }
 
-.submit-btn {
-  background: #16a34a;
-  color: white;
+.result-box h3 {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: .03em;
 }
+
+.result-box h4 {
+  font-size: 12px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.result-box p { color: var(--text-dim); font-size: 13.5px; }
+
+.result-box pre {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---- Submission history ---- */
+.submission-box {
+  margin: 0 16px 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+
+.submission-box h3 { font-size: 15px; margin-bottom: 12px; }
+
+.submission-box p { color: var(--text-faint); font-size: 13.5px; }
+
+.submission-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+
+.submission-table thead th {
+  text-align: left;
+  padding: 8px 10px;
+  color: var(--text-faint);
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--border);
+}
+
+.submission-table tbody td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+
+.submission-table tbody tr:hover { background: var(--surface-2); }
+.submission-table tbody tr:last-child td { border-bottom: none; }

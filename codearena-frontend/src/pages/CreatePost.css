@@ -1,35 +1,42 @@
-.create-post-container{
-  max-width:700px;
-  margin:60px auto;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
+.create-post-container {
+  max-width: 700px;
+  margin: 56px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.create-post-container input{
-  padding:12px;
-  font-size:16px;
-  border:1px solid #d1d5db;
-  border-radius:6px;
+.create-post-container input,
+.create-post-container textarea {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: border-color .18s ease, box-shadow .18s ease;
 }
 
-.create-post-container textarea{
-  padding:12px;
-  height:150px;
-  font-size:16px;
-  border:1px solid #d1d5db;
-  border-radius:6px;
+.create-post-container input:focus,
+.create-post-container textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
-.create-post-container button{
-  padding:12px;
-  background:#22c55e;
-  border:none;
-  color:white;
-  border-radius:6px;
-  cursor:pointer;
+.create-post-container textarea { height: 160px; resize: vertical; }
+
+.create-post-container button {
+  padding: 12px;
+  background: var(--brand);
+  border: none;
+  color: #06210f;
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s ease;
 }
 
-.create-post-container button:hover{
-  background:#16a34a;
-}
+.create-post-container button:hover { background: var(--brand-strong); }

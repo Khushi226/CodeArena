@@ -1,6 +1,5 @@
 
 
-
 package com.codearena.backend.controller;
 
 import com.codearena.backend.dto.ProblemResponse;
@@ -29,6 +28,19 @@ public class ProblemController {
     @GetMapping
     public List<Problem> getAllProblems() {
         return problemService.getAllProblems();
+    }
+
+    // Admin only — general admin tooling, includes hidden problems too.
+    @GetMapping("/admin/all")
+    public List<Problem> getAllProblemsForAdmin() {
+        return problemService.getAllProblemsForAdmin();
+    }
+
+    // Admin only — the contest builder's picker calls THIS, not /admin/all.
+    // Only returns problems staged as contest-exclusive (visible=false).
+    @GetMapping("/admin/hidden")
+    public List<Problem> getHiddenProblemsForAdmin() {
+        return problemService.getHiddenProblemsForAdmin();
     }
 
     /**
@@ -61,10 +73,6 @@ public class ProblemController {
             starterCode
         );
     }
-
-
-
-
 
 
     @GetMapping("/topic/{topic}")

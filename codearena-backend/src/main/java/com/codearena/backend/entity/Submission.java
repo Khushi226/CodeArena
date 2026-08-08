@@ -1,3 +1,4 @@
+
 package com.codearena.backend.entity;
 
 import jakarta.persistence.*;
@@ -17,6 +18,11 @@ public class Submission {
 
     @Column(name = "problem_id", nullable = false)
     private Long problemId;
+
+    // Null for normal practice submissions. Set when this submission was made
+    // inside a contest window, so it can be scored/leaderboarded separately.
+    @Column(name = "contest_id")
+    private Long contestId;
 
     @Column(nullable = false, length = 20)
     private String language;
@@ -58,6 +64,14 @@ public class Submission {
 
     public void setProblemId(Long problemId) {
         this.problemId = problemId;
+    }
+
+    public Long getContestId() {
+        return contestId;
+    }
+
+    public void setContestId(Long contestId) {
+        this.contestId = contestId;
     }
 
     public String getLanguage() {

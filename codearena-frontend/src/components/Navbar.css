@@ -1,164 +1,143 @@
-
-
 .navbar {
   width: 100%;
-  height: 64px;
-  background: #020617;
-  border-bottom: 1px solid #1e293b;
+  height: 68px;
+  background: rgba(6, 10, 19, .85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-
 
 .navbar-container {
   width: 100%;
-  height: 64px;
-
+  height: 68px;
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 40px;
 }
 
-
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-}
+.navbar-left { display: flex; align-items: center; }
 
 .logo {
-  font-size: 22px;
+  font-family: var(--font-display);
+  font-size: 21px;
   font-weight: 700;
-  color: #22c55e;
+  color: var(--text);
   cursor: pointer;
-  letter-spacing: 0.5px;
-}
-
-.logo:hover {
-  color: #4ade80;
-}
-
-
-
-.nav-center {
+  letter-spacing: -0.01em;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 2px;
+  transition: color .18s ease;
 }
+
+.logo::before {
+  content: "</>";
+  color: var(--brand);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.logo:hover { color: var(--brand); }
+
+.nav-center { display: flex; align-items: center; gap: 8px; }
 
 .nav-link {
-  color: #cbd5f5;
-  font-size: 15px;
+  color: var(--text-dim);
+  font-size: 14.5px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s ease;
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  transition: color .18s ease, background .18s ease;
 }
 
-.nav-link:hover {
-  color: #22c55e;
-}
+.nav-link:hover { color: var(--text); background: var(--surface-2); }
 
-
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-
+.nav-right { display: flex; align-items: center; gap: 14px; }
 
 .profile-avatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  border: 2px solid var(--border-strong);
+  transition: transform .15s ease, border-color .15s ease;
 }
 
-.profile-avatar:hover {
-  transform: scale(1.08);
-}
-
-
+.profile-avatar:hover { transform: scale(1.06); border-color: var(--brand); }
 
 .login-btn {
-  border: 1px solid #334155;
-  padding: 6px 14px;
-  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  padding: 8px 18px;
+  border-radius: var(--r-sm);
   background: transparent;
-  color: #e5e7eb;
-  font-weight: 500;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all .18s ease;
 }
 
 .login-btn:hover {
-  background: #22c55e;
-  color: #020617;
-  border-color: #22c55e;
+  background: var(--brand);
+  color: #06210f;
+  border-color: var(--brand);
+  transform: translateY(-1px);
 }
 
 .logout-btn {
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-weight: 500;
+  background: transparent;
+  color: var(--red);
+  border: 1px solid rgba(248, 113, 113, .35);
+  padding: 8px 16px;
+  border-radius: var(--r-sm);
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all .18s ease;
 }
 
-.logout-btn:hover {
-  background: #dc2626;
-}
+.logout-btn:hover { background: rgba(239, 68, 68, .12); border-color: var(--red); }
 
-
-.profile-menu {
-  position: relative;
-}
-
-
+.profile-menu { position: relative; }
 
 .dropdown-menu {
   position: absolute;
   right: 0;
-  top: 50px;
-
-  background: #020617;
-  border: 1px solid #1e293b;
-  border-radius: 8px;
-
-  width: 180px;
-
+  top: 52px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  width: 190px;
   display: flex;
   flex-direction: column;
-
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  padding: 6px;
+  box-shadow: var(--shadow-lg);
+  animation: dropdownIn .16s ease;
 }
 
-
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .dropdown-menu div {
-  padding: 10px 16px;
+  padding: 10px 12px;
   cursor: pointer;
-  color: #e5e7eb;
-  transition: background 0.2s;
+  color: var(--text-dim);
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .15s ease, color .15s ease;
 }
 
-.dropdown-menu div:hover {
-  background: #1e293b;
-}
+.dropdown-menu div:hover { background: var(--surface-2); color: var(--text); }
 
-
-
-.logout-option {
-  color: #ef4444;
-}
-
-
-
-
-
-
+.logout-option { color: var(--red) !important; }
+.logout-option:hover { background: rgba(239, 68, 68, .12) !important; }

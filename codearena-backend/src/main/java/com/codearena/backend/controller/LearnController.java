@@ -12,107 +12,57 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/learn")
 public class LearnController {
+    @GetMapping("/problems")
+    public List<Map<String, String>> getProblems() {
 
-    
+        List<Map<String, String>> problems = new ArrayList<>();
 
-//     @GetMapping("/problems")
-// public List<Map<String,String>> getProblems() {
+        try {
 
-//     List<Map<String,String>> problems = new ArrayList<>();
+            ClassPathResource resource = new ClassPathResource("articles");
+            File folder = resource.getFile();
 
-//     try {
+            for (File file : Objects.requireNonNull(folder.listFiles())) {
 
-//         ClassPathResource resource = new ClassPathResource("articles");
-//         File folder = resource.getFile();
+                if (file.getName().endsWith(".md")) {
 
-//         File[] topicFolders = folder.listFiles();
+                    String slug = file.getName().replace(".md", "");
 
-//         if(topicFolders == null) return problems;
+                    Map<String, String> problem = new HashMap<>();
+                    problem.put("title", slug.replace("-", " "));
+                    problem.put("slug", slug);
+                    problem.put("topic", "General");
 
-//         for(File topicFolder : topicFolders){
-
-//             if(topicFolder.isDirectory()){
-
-//                 String topic = topicFolder.getName();
-
-//                 File[] files = topicFolder.listFiles();
-
-//                 if(files == null) continue;
-
-//                 for(File file : files){
-
-//                     if(file.getName().endsWith(".md")){
-
-//                         String slug = file.getName().replace(".md","");
-
-//                         Map<String,String> problem = new HashMap<>();
-//                         problem.put("title", slug.replace("-", " "));
-//                         problem.put("slug", slug);
-//                         problem.put("topic", topic);
-
-//                         problems.add(problem);
-//                     }
-//                 }
-//             }
-//         }
-
-//     } catch(Exception e){
-//         e.printStackTrace();
-//     }
-
-//     return problems;
-// }
-@GetMapping("/problems")
-public List<Map<String, String>> getProblems() {
-
-    List<Map<String, String>> problems = new ArrayList<>();
-
-    try {
-
-        ClassPathResource resource = new ClassPathResource("articles");
-        File folder = resource.getFile();
-
-        for (File file : Objects.requireNonNull(folder.listFiles())) {
-
-            if (file.getName().endsWith(".md")) {
-
-                String slug = file.getName().replace(".md", "");
-
-                Map<String, String> problem = new HashMap<>();
-                problem.put("title", slug.replace("-", " "));
-                problem.put("slug", slug);
-                problem.put("topic", "General");
-
-                problems.add(problem);
+                    problems.add(problem);
+                }
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-    } catch (Exception e) {
-        e.printStackTrace();
+        return problems;
     }
 
-    return problems;
-}
+    @GetMapping("/{slug}")
+    public ResponseEntity<String> getArticle(@PathVariable String slug) {
 
- @GetMapping("/{slug}")
-public ResponseEntity<String> getArticle(@PathVariable String slug) {
+        try {
 
-    try {
+            File file = new File("codearena-backend/src/main/resources/articles/" + slug + ".md");
 
-        File file = new File("codearena-backend/src/main/resources/articles/" + slug + ".md");
+            System.out.println("Looking for file at: " + file.getAbsolutePath());
 
-        System.out.println("Looking for file at: " + file.getAbsolutePath());
+            if(!file.exists()) {
+                return ResponseEntity.status(404).body("Article not found");
+            }
 
-        if(!file.exists()) {
-            return ResponseEntity.status(404).body("Article not found");
+            String content = Files.readString(file.toPath());
+
+            return ResponseEntity.ok(content);
+
+        } catch(Exception e) {
+            return ResponseEntity.status(500).body("Error loading article");
         }
-
-        String content = Files.readString(file.toPath());
-
-        return ResponseEntity.ok(content);
-
-    } catch(Exception e) {
-        return ResponseEntity.status(500).body("Error loading article");
     }
-}
 }

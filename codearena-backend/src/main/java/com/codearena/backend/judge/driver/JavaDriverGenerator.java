@@ -197,7 +197,7 @@ public class JavaDriverGenerator {
 
         if (returnType.equals("ListNode")) {
 
-            sb.append("ListNode result=sol.")
+            sb.append("Lis988888888888888888--;tNode result=sol.")
                     .append(meta.getMethodName())
                     .append("(").append(callParams).append(");\n");
 

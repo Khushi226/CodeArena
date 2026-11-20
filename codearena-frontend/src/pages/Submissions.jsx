@@ -108,6 +108,7 @@ import "./Submissions.css";
 function Submissions() {
 
   const [submissions, setSubmissions] = useState([]);
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
   useEffect(() => {
 
@@ -122,7 +123,7 @@ function Submissions() {
       return;
     }
 
-    fetch(`http://localhost:8080/submissions/user/${userId}`, {
+    fetch(`${API_BASE_URL}/submissions/user/${userId}`, {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token,

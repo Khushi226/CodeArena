@@ -9,6 +9,8 @@ function TopicsSection() {
 
   const navigate = useNavigate();
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const topics = [
     { title: "Arrays", color: "green", slug: "ARRAY" },
     { title: "Strings", color: "red", slug: "STRING" },
@@ -29,7 +31,7 @@ function TopicsSection() {
 
     try {
       const res = await fetch(
-        `http://localhost:8080/problems/topic/${slug}`
+        `${API_BASE_URL}/problems/topic/${slug}`
       );
       const data = await res.json();
       setProblems(data);

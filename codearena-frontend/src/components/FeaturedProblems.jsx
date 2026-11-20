@@ -108,9 +108,10 @@ function FeaturedProblems() {
 
   const navigate = useNavigate();
   const [problems, setProblems] = useState([]);
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
   useEffect(() => {
-    fetch("http://localhost:8080/problems")
+    fetch(`${API_BASE_URL}/problems`)
       .then(res => res.json())
       .then(data => {
         console.log("Problems:", data);

@@ -350,6 +350,8 @@ function Settings() {
   const [field, setField] = useState("");
   const [value, setValue] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   /* =========================
      FORCE DARK THEME ALWAYS
      ========================= */
@@ -363,7 +365,7 @@ function Settings() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:8080/me", {
+    fetch(`${API_BASE_URL}/me`, {
       headers: {
         Authorization: "Bearer " + token
       }
@@ -381,7 +383,7 @@ function Settings() {
   const handleSave = () => {
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:8080/users/me/${field}`, {
+    fetch(`${API_BASE_URL}/users/me/${field}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

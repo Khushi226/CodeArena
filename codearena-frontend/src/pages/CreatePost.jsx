@@ -6,6 +6,7 @@ function CreatePost() {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
     const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ function CreatePost() {
 
         try {
 
-            const res = await fetch("http://localhost:8080/discuss", {
+            const res = await fetch(`${API_BASE_URL}/discuss`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

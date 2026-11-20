@@ -109,6 +109,8 @@ function Dashboard() {
 
   const [data, setData] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   useEffect(() => {
 
     const fetchDashboard = async () => {
@@ -117,7 +119,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          "http://localhost:8080/users/me/dashboard",
+          `${API_BASE_URL}/users/me/dashboard`,
           {
             headers: {
               Authorization: "Bearer " + token

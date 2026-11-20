@@ -6,12 +6,13 @@ function Discuss() {
 
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
   useEffect(() => {
 
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:8080/discuss", {
+    fetch(`${API_BASE_URL}/discuss`, {
       headers: {
         "Authorization": "Bearer " + token
       }

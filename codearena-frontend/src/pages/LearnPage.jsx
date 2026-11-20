@@ -78,9 +78,10 @@ import "./LearnPage.css";
 const LearnPage = () => {
   const [problems, setProblems] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState("All");
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/learn/problems")
+    fetch(`${API_BASE_URL}/api/learn/problems`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Problems from API:", data);

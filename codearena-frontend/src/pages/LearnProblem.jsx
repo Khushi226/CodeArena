@@ -13,13 +13,14 @@ function LearnProblem() {
   const [article, setArticle] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
   useEffect(() => {
 
     const fetchArticle = async () => {
       try {
 
-        const res = await fetch(`http://localhost:8080/api/learn/${slug}`);
+        const res = await fetch(`${API_BASE_URL}/api/learn/${slug}`);
 
         if (!res.ok) {
           throw new Error("Article not found");

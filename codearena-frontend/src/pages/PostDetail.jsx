@@ -9,13 +9,15 @@ function PostDetail() {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState("");
 
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
     useEffect(() => {
 
-        fetch(`http://localhost:8080/discuss/${id}`)
+        fetch(`${API_BASE_URL}/discuss/${id}`)
             .then(res => res.json())
             .then(data => setPost(data));
 
-        fetch(`http://localhost:8080/discuss/${id}/comments`)
+        fetch(`${API_BASE_URL}/discuss/${id}/comments`)
             .then(res => res.json())
             .then(data => {
                 console.log("comments:", data);
@@ -53,7 +55,7 @@ function PostDetail() {
             return
         }
 
-        await fetch(`http://localhost:8080/discuss/${id}/comment`, {
+        await fetch(`${API_BASE_URL}/discuss/${id}/comment`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +70,7 @@ function PostDetail() {
         setComment("")
 
         // fetch comments again
-        const res = await fetch(`http://localhost:8080/discuss/${id}/comments`)
+        const res = await fetch(`${API_BASE_URL}/discuss/${id}/comments`)
         const data = await res.json()
 
         setComments(data)

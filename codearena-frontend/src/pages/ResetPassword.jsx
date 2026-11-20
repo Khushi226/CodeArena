@@ -8,12 +8,14 @@ function ResetPassword() {
 
     const email = localStorage.getItem("resetEmail");
 
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
     const resetPassword = async () => {
 
         try {
 
             const response = await fetch(
-                `http://localhost:8080/auth/reset-password?email=${email}&newPassword=${password}`,
+                `${API_BASE_URL}/auth/reset-password?email=${email}&newPassword=${password}`,
                 { method: "POST" }
             );
 

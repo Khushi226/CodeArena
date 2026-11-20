@@ -221,6 +221,8 @@ function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState("");
   const [showForgot, setShowForgot] = useState(false);
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -233,7 +235,7 @@ function Login({ setIsLoggedIn }) {
 
     try {
 
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -274,7 +276,7 @@ function Login({ setIsLoggedIn }) {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/auth/forgot-password?email=" + email,
+        `${API_BASE_URL}/auth/forgot-password?email=` + email,
         { method: "POST" }
       );
 

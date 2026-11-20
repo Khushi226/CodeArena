@@ -9,13 +9,15 @@ const navigate = useNavigate();
 
 const email = localStorage.getItem("resetEmail");
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
 const verifyOtp = async () => {
 
 
 try {
 
   const response = await fetch(
-    `http://localhost:8080/auth/verify-otp?email=${email}&otp=${otp}`,
+    `${API_BASE_URL}/auth/verify-otp?email=${email}&otp=${otp}`,
     { method: "POST" }
   );
 
